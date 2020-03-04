@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,28 +11,48 @@ import java.util.List;
  *
  * @author rodrigo.raoki
  */
-public class Mapa {
-    private List<No> mapa = new ArrayList();
-    private List<No> viz = new ArrayList();
-    private int linhas, colunas;
-    
-    public Mapa(int linhas, int colunas){
+public class Main {
+    public static void main(String[] args) {
+//    List<No> vertices_aula = new ArrayList();
+//        
+//        No noA = new No("A");
+//        No noB = new No("B");
+//        No noC = new No("C");
+//        No noD = new No("D");
+//        No noE = new No("E");
+//        No noF = new No("F");
+//        No noG = new No("G");
+//        
+//        
+//        
+//        List<No> vizinhoA = new ArrayList();
+//        vizinhoA.add(noG);
+//        vizinhoA.add(noD);
+//        vizinhoA.add(noB);
+//        
+//        noA.setVizinhos(vizinhoA);
+//        
+//        List<No> vizinhoB = new ArrayList();
+//        vizinhoB.add(noA);
+//        vizinhoB.add(noC);
+//        vizinhoB.add(noF);
+//        
+//        noB.setVizinhos(vizinhoB);
+//        
+//        vertices_aula.add(noA);
+//        vertices_aula.add(noB);
+//        
+//        
+//        
+//        Grafo Grafo = new Grafo(vertices_aula);
+//        Grafo.imprime_grafo();
+
+        Mapa new_map = new Mapa(6,6);
         
-    }
-    
-    public void cria_mapa(){
-        int tamanho = linhas*colunas;
+        new_map.cria_mapa();
+        new_map.configura_mapa();
         
-        for(int i = 0; i < tamanho; i++){
-            No no = new No(i);
-            mapa.add(no);
-        }
+        new_map.getNo(1).imprimeVizinhos();
     }
     
-    public void configura_mapa(){
-        for (No no: mapa){
-            
-            no.setVizinhos();
-        }
-    }
 }
