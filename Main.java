@@ -57,6 +57,7 @@ public class Main {
     Mapa maps = new Mapa(6, 6);
     maps.cria_mapa();
     maps.configura_mapa();
+    maps.getNo(8).setParede(true);
     
     maps.imprime();
     }

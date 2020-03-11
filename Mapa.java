@@ -151,16 +151,20 @@ public class Mapa {
     }
     
     public void imprime(){
-        for(int i = 0; i < colunas; i++){
-            System.out.print(" _  ");
-        }
         for(int j = 0; j < linhas; j++){
             System.out.println("");
             for(int i = 0; i < colunas; i++){
-                System.out.print("|"+"_"+"| ");
-            }
-            
-            
+                if (i == 0){
+                    System.out.print("|");
+                }
+                
+                if(getNo((j*this.linhas)+i).isParede()){
+                    System.out.print("X"+"|");
+                }
+                else{
+                System.out.print("_"+"|");
+                }
+            }  
         }
     }
 }

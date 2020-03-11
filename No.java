@@ -9,6 +9,15 @@ public class No {
     private List<No> vizinhos = new ArrayList();
     private int id;
     private String nome;
+    private boolean parede;
+
+    public boolean isParede() {
+        return parede;
+    }
+
+    public void setParede(boolean parede) {
+        this.parede = parede;
+    }
     
     public No (int id){
         this.id = id;
