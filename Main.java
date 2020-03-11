@@ -1,3 +1,5 @@
+package Grafos_IA;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +53,12 @@ public class Main {
 //        
 //        Grafo Grafo = new Grafo(vertices_aula);
 //        Grafo.imprime_grafo();
+
+    Mapa maps = new Mapa(6, 6);
+    maps.cria_mapa();
+    maps.configura_mapa();
+    
+    maps.imprime();
     }
     
 }

@@ -1,4 +1,4 @@
-
+package Grafos_IA;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +11,7 @@ public class No {
     private String nome;
     
     public No (int id){
-        setID(id);
+        this.id = id;
     }
 
     public String getNome() {
@@ -25,8 +25,18 @@ public class No {
     public void setID(int id){
         this.id = id;
     }
+    
+    public int getID(){
+        return this.id;
+    }
     public List<No> getVizinhos() {
         return vizinhos;
+    }
+    
+    public void imprime_vizinhos(){
+        for(No novizinho: vizinhos){
+            System.out.println(novizinho.getID());
+        }
     }
 
     public void setVizinhos(List<No> vizinhos) {

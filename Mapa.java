@@ -1,3 +1,4 @@
+package Grafos_IA;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,8 @@ public class Mapa {
     private int linhas, colunas;
     
     public Mapa(int linhas, int colunas){
-        
+        this.linhas = linhas;
+        this.colunas = colunas;
     }
     
     public void cria_mapa(){
@@ -31,57 +33,104 @@ public class Mapa {
     
     public void configura_mapa(){
         int i = 0;
-        for (No no: mapa){
-            i++;
-            
+        for (No no: mapa){          
             //primeira linha
-            if(no.getID()/6 == 0){        
+            if(no.getID()/colunas == 0){        
                 //adiciona o ponto debaixo
-                no.adicionaVizinho(mapa.get(6+i));
-            
-//                //adiciona o ponto da frente e debaixo da frente
-//                if(no.getID() != 5){
-//                    //adiciona o da frente
-//                    no.adicionaVizinho(mapa.get(1+i));
-//                    
-//                    //adiciona o debaixo da frente
-//                    no.adicionaVizinho(mapa.get(6+i));
-//                }
-//                
-//                //adicion o ponto de trás e debaixo de tras
-//                if(no.getID() != 0){
-//                    //adiciona o de trás
-//                    no.adicionaVizinho(mapa.get(i-1));
-//                    
-//                    //adiciona o debaixo e de trás
-//                    no.adicionaVizinho(mapa.get(5+i));
-//                    
-//                }   
+                no.adicionaVizinho(mapa.get(colunas+i));
+                
+                //primeira coluna
+                if(no.getID()%linhas == 0){
+                    //adiciona o ponto debaixo na frente
+                no.adicionaVizinho(mapa.get(colunas+i+1));
+                }
+                
+                //segundo coluna - penultima
+                if(no.getID()%linhas >= 1 && no.getID()%linhas <= linhas-2){
+                //adiciona o ponto da debaixo da frente
+                no.adicionaVizinho(mapa.get(colunas+i+1)); 
+                //adiciona o ponto de debaixo da trás
+                no.adicionaVizinho(mapa.get(colunas+i-1));
+            }
+                //ultima coluna
+                if(no.getID()%linhas == 5){
+                no.adicionaVizinho(mapa.get(colunas+i-1));
+                }
             }
             
+            
+            
             //segunda linha - penultima
-            if (no.getID() >= 6 && no.getID() <= 29){
+            if (no.getID() >= colunas && no.getID() <= (colunas*linhas)-colunas-1){
                 //adiciona o ponto debaixo
-                no.adicionaVizinho(mapa.get(i+6));
-                
+                no.adicionaVizinho(mapa.get(i+colunas));
                 //adiciona o ponto de cima
-                no.adicionaVizinho(mapa.get(i-6));
+                no.adicionaVizinho(mapa.get(i-colunas));
+                
+                //primeira coluna
+                if(no.getID()%linhas == 0){
+                    //adiciona o ponto debaixo na frente
+                    no.adicionaVizinho(mapa.get(i+colunas+1));
+                    //adiciona o ponto de cima da frente
+                    no.adicionaVizinho(mapa.get(i-colunas+1));
+                }
+                
+                //segundo coluna - penultima
+                if(no.getID()%linhas >= 1 && no.getID()%linhas <= linhas-2){
+                    //adiciona o ponto debaixo na frente
+                    no.adicionaVizinho(mapa.get(i+colunas+1));
+                    //adiciona o ponto de cima da frente
+                    no.adicionaVizinho(mapa.get(i-colunas+1));
+                    //adiciona o ponto debaixo de trás
+                    no.adicionaVizinho(mapa.get(i+colunas-1));
+                    //adiciona o ponto de cima de trás
+                    no.adicionaVizinho(mapa.get(i-colunas-1));
+                    
+            }
+                //ultima coluna
+                if(no.getID()%linhas == 5){
+                    //adiciona o ponto debaixo de trás
+                    no.adicionaVizinho(mapa.get(i+colunas-1));
+                    //adiciona o ponto de cima de trás
+                    no.adicionaVizinho(mapa.get(i-colunas-1));
+                }
+                
+                
             }
             
             //ultima linha
             if (no.getID() >= 30){
                 //adiciona o ponto de cima
-                no.adicionaVizinho(mapa.get(i-6));
+                no.adicionaVizinho(mapa.get(i-colunas));
+                
+                //primeira coluna
+                if(no.getID()%linhas == 0){
+                    //adiciona o ponto de cima da frente
+                    no.adicionaVizinho(mapa.get(i-colunas+1));
+                }
+                
+                //segundo coluna - penultima
+                if(no.getID()%linhas >= 1 && no.getID()%linhas <= linhas-2){
+                //adiciona o ponto da cima na frente
+                no.adicionaVizinho(mapa.get(i-colunas+1)); 
+                //adiciona o ponto de cima de trás
+                no.adicionaVizinho(mapa.get(i-colunas-1));
+            }
+                //ultima coluna
+                if(no.getID()%linhas == 5){
+                    //adiciona o ponto de cima de trás
+                    no.adicionaVizinho(mapa.get(i-colunas-1));
+                }
             }
             
             //primeira coluna
-            if(no.getID()%6 == 0){
+            if(no.getID()%linhas == 0){
                 //adiciona o ponto da frente
-                no.adicionaVizinho(mapa.get(i+1));
+                no.adicionaVizinho(mapa.get(i+1));     
             }
             
             //segund coluna - penultima
-            if(no.getID()%6 >= 1 && no.getID()%6 <= 4){
+            if(no.getID()%linhas >= 1 && no.getID()%linhas <= linhas-2){
                 //adiciona o ponto da frente
                 no.adicionaVizinho(mapa.get(i+1));
                 
@@ -90,13 +139,28 @@ public class Mapa {
             }
             
             //ultima coluna
-            if(no.getID()%6 == 5){
+            if(no.getID()%linhas == 5){
                 no.adicionaVizinho(mapa.get(i-1));
             }
+          i++;
         }
     }
     
     public No getNo(int no){
         return mapa.get(no);
+    }
+    
+    public void imprime(){
+        for(int i = 0; i < colunas; i++){
+            System.out.print(" _  ");
+        }
+        for(int j = 0; j < linhas; j++){
+            System.out.println("");
+            for(int i = 0; i < colunas; i++){
+                System.out.print("|"+"_"+"| ");
+            }
+            
+            
+        }
     }
 }
